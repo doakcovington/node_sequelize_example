@@ -6,7 +6,7 @@ const Report = database.define('report', {
         type: Sequelize.DATEONLY,
     },
     oxygen: {
-        type: Sequelize.FLOAT
+        type: Sequelize.INTEGER
     }
 });
 
