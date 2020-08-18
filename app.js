@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const { request } = require('http');
 const { response } = require('express');
-const sequelize = require('./config/database');
+const database = require('./config/database');
 
 
 const app = express();
@@ -16,7 +16,10 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
+//Report routes
+app.use('/reports', require('./routes/reports'));
+
 // Test database connection
-sequelize.authenticate()
+database.authenticate()
 .then(() => console.log('Database connected...'))
 .catch(error => console.log('Error: ' + error)) 
