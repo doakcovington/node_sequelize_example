@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const { request } = require('http');
 const { response } = require('express');
-const { Sequelize } = require('sequelize');
+const sequelize = require('./config/database');
+
 
 const app = express();
 
@@ -15,11 +16,7 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
-const sequelize = new Sequelize('pulse_ox', 'postgres', 'admin', {
-    host: 'localhost',
-    dialect: 'postgres'
-});
-
+// Test database connection
 sequelize.authenticate()
 .then(() => console.log('Database connected...'))
 .catch(error => console.log('Error: ' + error)) 
